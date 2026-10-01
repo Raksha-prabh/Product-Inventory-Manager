@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Inventory Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-header">
+
+        <div class="header-content">
+
+            <div class="brand">
+                <div class="brand-icon">📦</div>
+
+                <div>
+                    <h1>Inventory Manager</h1>
+                    <p>Manage your products easily</p>
+                </div>
+            </div>
+
+            <div class="header-actions">
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-pressed="false"
+                    aria-label="Toggle dark mode"
+                >
+                    <svg
+                        class="icon-sun"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <circle cx="12" cy="12" r="4.5" />
+                        <path
+                            stroke-linecap="round"
+                            d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"
+                        />
+                    </svg>
+
+                    <svg
+                        class="icon-moon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"
+                        />
+                    </svg>
+                </button>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    System Active
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- Welcome Section -->
+        <section class="welcome">
+
+            <div>
+                <h2>Product Inventory</h2>
+                <p>Add, manage and track your products from one place.</p>
+            </div>
+
+            <div class="date-box">
+                <span>📅</span>
+                <span>Inventory Dashboard</span>
+            </div>
+
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    📦
+                </div>
+
+                <div class="stat-body">
+                    <p>Total Products</p>
+                    <h3 id="totalProducts">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <div class="stat-body">
+                    <p>In Stock</p>
+                    <h3 id="stockProducts">0</h3>
+                </div>
+
+                <div class="stat-progress">
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            id="stockBar"
+                        ></div>
+                    </div>
+
+                    <span
+                        class="progress-label"
+                        id="stockPercent"
+                    >
+                        0%
+                    </span>
+                </div>
+
+            </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    ₹
+                </div>
+
+                <div class="stat-body">
+                    <p>Total Value</p>
+                    <h3 id="totalValue">₹0</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Main Grid -->
+        <section class="dashboard-grid">
+
+
+            <!-- Add Product -->
+            <div class="card form-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Add New Product</h2>
+                        <p>Enter product details below</p>
+                    </div>
+
+                    <div class="small-icon">
+                        +
+                    </div>
+
+                </div>
+
+
+                <form id="productForm">
+
+                    <div class="input-group">
+
+                        <label for="productId">
+                            Product ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productId"
+                            placeholder="e.g. 101"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="productName">
+                            Product Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="e.g. Laptop"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="price">
+                            Price
+                        </label>
+
+                        <div class="price-input">
+
+                            <span>₹</span>
+
+                            <input
+                                type="number"
+                                id="price"
+                                placeholder="55000"
+                                min="0"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="tags">
+                            Tags
+                        </label>
+
+                        <input
+                            type="text"
+                            id="tags"
+                            placeholder="Electronics, Computer"
+                            required
+                        >
+
+                        <small>
+                            Separate multiple tags using commas
+                        </small>
+
+                    </div>
+
+
+                    <label class="stock-option">
+
+                        <input
+                            type="checkbox"
+                            id="inStock"
+                        >
+
+                        <span class="custom-checkbox"></span>
+
+                        <span>
+                            Product is currently in stock
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="add-button"
+                    >
+                        <span>＋</span>
+                        Add Product
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Product List -->
+            <div class="card products-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Product Inventory</h2>
+                        <p>All products added to your inventory</p>
+                    </div>
+
+                    <div class="product-count" id="productCount">
+                        0 Products
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Tags</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="productList">
+
+                        </tbody>
+
+                    </table>
+
+                    <div
+                        id="emptyMessage"
+                        class="empty-message"
+                    >
+                        <div>📦</div>
+                        <h3>No products yet</h3>
+                        <p>Add your first product using the form.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer>
+
+            <p>
+                Product Inventory Manager
+                <span>•</span>
+                Built with TypeScript
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- Compiled TypeScript -->
+   <script src="dist/inventory.js"></script>
+</body>
+
+</html>
